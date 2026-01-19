@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naser - تواصل مع مجتمعاتك</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/modals.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+</head>
+<body>
+    <!-- شاشة المصادقة -->
+    <div id="auth-screen" class="auth-screen">
+        <div class="auth-container">
+            <div class="auth-header">
+                <div class="logo-container">
+                    <div class="logo">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h1>Naser</h1>
+                </div>
+                <p class="tagline">تواصل مع مجتمعاتك، بأسلوب جديد</p>
+            </div>
+            
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-tab="login">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span>تسجيل الدخول</span>
+                </button>
+                <button class="auth-tab" data-tab="register">
+                    <i class="fas fa-user-plus"></i>
+                    <span>إنشاء حساب</span>
+                </button>
+            </div>
+            
+            <form id="login-form" class="auth-form active">
+                <div class="form-group">
+                    <label for="login-email" class="form-label">
+                        <i class="fas fa-envelope"></i>
+                        البريد الإلكتروني
+                    </label>
+                    <input type="email" id="login-email" class="form-input" placeholder="example@email.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="login-password" class="form-label">
+                        <i class="fas fa-lock"></i>
+                        كلمة المرور
+                    </label>
+                    <div class="password-container">
+                        <input type="password" id="login-password" class="form-input" placeholder="كلمة المرور" required>
+                        <button type="button" class="password-toggle" data-target="login-password">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="form-options">
+                    <label class="checkbox">
+                        <input type="checkbox" id="remember-me">
+                        <span>تذكرني</span>
+                    </label>
+                    <a href="#" class="forgot-password">نسيت كلمة المرور؟</a>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-block btn-lg">
+                    <i class="fas fa-sign-in-alt"></i>
+                    تسجيل الدخول
+                </button>
+                
+                <div class="auth-divider">
+                    <span>أو</span>
+                </div>
+                
+                <div class="social-login">
+                    <button type="button" class="btn btn-google">
+                        <i class="fab fa-google"></i>
+                        متابعة بحساب Google
+                    </button>
+                </div>
+            </form>
+            
+            <form id="register-form" class="auth-form">
+                <div class="form-group">
+                    <label for="register-username" class="form-label">
+                        <i class="fas fa-user"></i>
+                        اسم المستخدم
+                    </label>
+                    <input type="text" id="register-username" class="form-input" placeholder="اسم المستخدم" required>
+                    <div class="form-hint">3-20 حرف، إنجليزية وأرقام و _ فقط</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="register-email" class="form-label">
+                        <i class="fas fa-envelope"></i>
+                        البريد الإلكتروني
+                    </label>
+                    <input type="email" id="register-email" class="form-input" placeholder="example@email.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="register-password" class="form-label">
+                        <i class="fas fa-lock"></i>
+                        كلمة المرور
+                    </label>
+                    <div class="password-container">
+                        <input type="password" id="register-password" class="form-input" placeholder="كلمة المرور" required>
+                        <button type="button" class="password-toggle" data-target="register-password">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="form-hint">6 أحرف على الأقل</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="register-displayname" class="form-label">
+                        <i class="fas fa-id-card"></i>
+                        اسم العرض (اختياري)
+                    </label>
+                    <input type="text" id="register-displayname" class="form-input" placeholder="الاسم الذي يراه الآخرون">
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-block btn-lg">
+                    <i class="fas fa-user-plus"></i>
+                    إنشاء حساب
+                </button>
+                
+                <div class="terms-agreement">
+                    <label class="checkbox">
+                        <input type="checkbox" id="agree-terms" required>
+                        <span>أوافق على <a href="#" class="link">شروط الخدمة</a> و <a href="#" class="link">سياسة الخصوصية</a></span>
+                    </label>
+                </div>
+            </form>
+            
+            <div class="auth-footer">
+                <p>بالاستمرار، أنت توافق على <a href="#" class="link">شروط الخدمة</a> و <a href="#" class="link">سياسة الخصوصية</a></p>
+                <p class="copyright">© 2024 Naser. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+        
+        <div class="auth-background">
+            <div class="floating-icon" style="top: 20%; left: 10%;">
+                <i class="fas fa-comment-dots"></i>
+            </div>
+            <div class="floating-icon" style="top: 60%; right: 15%;">
+                <i class="fas fa-users"></i>
+            </div>
+            <div class="floating-icon" style="bottom: 30%; left: 20%;">
+                <i class="fas fa-hashtag"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- التطبيق الرئيسي -->
+    <div id="main-app" class="app-container" style="display: none;">
+        <!-- شريط الخوادم -->
+        <div class="servers-sidebar">
+            <div class="server-list">
+                <!-- سيتم تعبئتها بواسطة JavaScript -->
+            </div>
+            
+            <div class="server-actions">
+                <button class="server-action-btn" id="create-server-btn" title="إنشاء خادم">
+                    <i class="fas fa-plus"></i>
+                </button>
+                <button class="server-action-btn" id="explore-servers-btn" title="استكشاف الخوادم">
+                    <i class="fas fa-compass"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- شريط القنوات والأعضاء -->
+        <div class="channels-sidebar">
+            <!-- رأس الخادم -->
+            <div class="server-header">
+                <div class="server-info">
+                    <div class="server-icon">
+                        <img id="server-icon-img" src="assets/images/default-server.png" alt="Server">
+                    </div>
+                    <div class="server-details">
+                        <h2 id="server-name">اختر خادم</h2>
+                        <div class="server-status">
+                            <span class="online-count">0</span>
+                            <i class="fas fa-circle online"></i>
+                        </div>
+                    </div>
+                </div>
+                <button class="server-menu-btn" id="server-menu-btn">
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+            </div>
+
+            <!-- قائمة القنوات -->
+            <div class="channels-container">
+                <!-- سيتم تعبئتها بواسطة JavaScript -->
+            </div>
+
+            <!-- قائمة الأعضاء -->
+            <div class="members-container">
+                <div class="members-header">
+                    <h3>الأعضاء</h3>
+                    <span class="members-count">0</span>
+                </div>
+                <div class="members-list">
+                    <!-- سيتم تعبئتها بواسطة JavaScript -->
+                </div>
+            </div>
+
+            <!-- الملف الشخصي للمستخدم -->
+            <div class="user-profile">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <img id="user-avatar" src="assets/images/default-avatar.png" alt="You">
+                        <div class="user-status" id="user-status"></div>
+                    </div>
+                    <div class="user-details">
+                        <span class="user-name" id="user-name">جاري التحميل...</span>
+                        <span class="user-tag" id="user-tag">#0000</span>
+                    </div>
+                </div>
+                <div class="user-actions">
+                    <button class="user-action-btn" id="mic-btn" title="الميكروفون">
+                        <i class="fas fa-microphone"></i>
+                    </button>
+                    <button class="user-action-btn" id="headphones-btn" title="سماعات">
+                        <i class="fas fa-headphones"></i>
+                    </button>
+                    <button class="user-action-btn" id="settings-btn" title="الإعدادات">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- منطقة المحادثة -->
+        <div class="chat-area">
+            <!-- رأس القناة -->
+            <div class="chat-header">
+                <div class="channel-info">
+                    <div class="channel-icon">
+                        <i class="fas fa-hashtag" id="channel-icon"></i>
+                    </div>
+                    <div class="channel-details">
+                        <h3 id="channel-name">اختر قناة</h3>
+                        <div class="channel-topic" id="channel-topic"></div>
+                    </div>
+                </div>
+                
+                <div class="chat-actions">
+                    <button class="chat-action-btn" id="invite-btn" title="دعوة أشخاص">
+                        <i class="fas fa-user-plus"></i>
+                    </button>
+                    <button class="chat-action-btn" id="pins-btn" title="الرسائل المثبتة">
+                        <i class="fas fa-thumbtack"></i>
+                    </button>
+                    <button class="chat-action-btn" id="members-toggle-btn" title="إظهار/إخفاء الأعضاء">
+                        <i class="fas fa-users"></i>
+                    </button>
+                    
+                    <div class="search-box">
+                        <input type="text" id="search-messages" placeholder="بحث في الرسائل...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    
+                    <button class="chat-action-btn" id="notifications-btn" title="الإشعارات">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">0</span>
+                    </button>
+                    <button class="chat-action-btn" id="help-btn" title="المساعدة">
+                        <i class="fas fa-question-circle"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- الرسائل -->
+            <div class="messages-container" id="messages-container">
+                <!-- سيتم تعبئتها بواسطة JavaScript -->
+                
+                <div class="welcome-message" id="welcome-message">
+                    <div class="welcome-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>مرحباً في Naser! 👋</h3>
+                    <p>هذه بداية هذه القناة. أرسل رسالة للبدء!</p>
+                </div>
+            </div>
+
+            <!-- مؤشر الكتابة -->
+            <div class="typing-indicator" id="typing-indicator" style="display: none;">
+                <div class="typing-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <span id="typing-text">شخص ما يكتب...</span>
+            </div>
+
+            <!-- إدخال الرسالة -->
+            <div class="message-input-container">
+                <div class="input-addons">
+                    <button class="input-addon-btn" id="add-attachment-btn" title="إرفاق ملف">
+                        <i class="fas fa-plus-circle"></i>
+                    </button>
+                    <button class="input-addon-btn" id="add-gift-btn" title="إرسال هدية">
+                        <i class="fas fa-gift"></i>
+                    </button>
+                    <button class="input-addon-btn" id="add-image-btn" title="إرسال صورة">
+                        <i class="fas fa-image"></i>
+                    </button>
+                </div>
+                
+                <div class="message-input-wrapper">
+                    <input type="text" 
+                           id="message-input" 
+                           placeholder="اكتب رسالتك هنا..." 
+                           autocomplete="off"
+                           spellcheck="true">
+                    
+                    <div class="input-suggestions" id="emoji-suggestions" style="display: none;">
+                        <!-- اقتراحات الإيموجي -->
+                    </div>
+                </div>
+                
+                <div class="input-actions">
+                    <button class="input-action-btn" id="emoji-btn" title="الإيموجي">
+                        <i class="fas fa-smile"></i>
+                    </button>
+                    <button class="input-action-btn" id="mention-btn" title="توجيه رسالة">
+                        <i class="fas fa-at"></i>
+                    </button>
+                    <button class="input-action-btn" id="send-btn" title="إرسال (Ctrl+Enter)">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- المرفقات -->
+            <div class="attachments-preview" id="attachments-preview" style="display: none;">
+                <div class="attachments-header">
+                    <span>المرفقات</span>
+                    <button class="clear-attachments" id="clear-attachments-btn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="attachments-list" id="attachments-list">
+                    <!-- سيتم تعبئتها بواسطة JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- الأصدقاء والمحادثات المباشرة -->
+        <div class="friends-sidebar" id="friends-sidebar">
+            <div class="friends-header">
+                <h3>الأصدقاء</h3>
+                <button class="friends-action-btn" id="add-friend-btn">
+                    <i class="fas fa-user-plus"></i>
+                </button>
+            </div>
+            
+            <div class="friends-search">
+                <input type="text" placeholder="ابحث عن أصدقاء..." id="friends-search-input">
+                <i class="fas fa-search"></i>
+            </div>
+            
+            <div class="friends-tabs">
+                <button class="friends-tab active" data-tab="online">المتصلون</button>
+                <button class="friends-tab" data-tab="all">الجميع</button>
+                <button class="friends-tab" data-tab="pending">طلبات الصداقة</button>
+            </div>
+            
+            <div class="friends-list">
+                <!-- سيتم تعبئتها بواسطة JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal لإنشاء خادم -->
+    <div id="create-server-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>إنشاء خادم جديد</h3>
+                <button class="modal-close" id="close-create-server-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <form id="create-server-form">
+                    <div class="form-group">
+                        <label for="server-name" class="form-label">اسم الخادم</label>
+                        <input type="text" 
+                               id="server-name-input" 
+                               class="form-input" 
+                               placeholder="مثل: مجتمع المبرمجين"
+                               required
+                               maxlength="100">
+                        <div class="form-hint">سيظهر هذا الاسم لأعضاء الخادم</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="server-description" class="form-label">وصف الخادم (اختياري)</label>
+                        <textarea id="server-description-input" 
+                                  class="form-textarea" 
+                                  placeholder="أخبرنا عن خادمك..."
+                                  rows="3"
+                                  maxlength="500"></textarea>
+                        <div class="form-hint">وصف قصير يظهر في صفحة الخادم</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">صورة الخادم</label>
+                        <div class="image-upload-container">
+                            <div class="image-preview" id="server-icon-preview">
+                                <div class="image-placeholder">
+                                    <i class="fas fa-server"></i>
+                                    <span>اختر صورة</span>
+                                </div>
+                                <img id="server-icon-preview-img" style="display: none;">
+                            </div>
+                            <div class="image-upload-actions">
+                                <label for="server-icon-input" class="btn btn-secondary">
+                                    <i class="fas fa-upload"></i>
+                                    رفع صورة
+                                </label>
+                                <input type="file" 
+                                       id="server-icon-input" 
+                                       accept="image/*"
+                                       style="display: none;">
+                                <div class="file-hint">JPG, PNG أو GIF. الحد الأقصى 5MB</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">خصوصية الخادم</label>
+                        <div class="radio-group">
+                            <label class="radio">
+                                <input type="radio" name="server-privacy" value="public" checked>
+                                <div class="radio-content">
+                                    <div class="radio-title">
+                                        <i class="fas fa-globe"></i>
+                                        عام
+                                    </div>
+                                    <div class="radio-description">يمكن لأي شخص الانضمام عبر رابط الدعوة</div>
+                                </div>
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="server-privacy" value="private">
+                                <div class="radio-content">
+                                    <div class="radio-title">
+                                        <i class="fas fa-lock"></i>
+                                        خاص
+                                    </div>
+                                    <div class="radio-description">بالدعوات فقط، غير مدرج في الاستكشاف</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" id="cancel-create-server">
+                            إلغاء
+                        </button>
+                        <button type="submit" class="btn btn-primary" id="submit-create-server">
+                            <i class="fas fa-plus"></i>
+                            إنشاء الخادم
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal إعدادات المستخدم -->
+    <div id="user-settings-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content wide-modal">
+            <div class="modal-header">
+                <h3>إعدادات المستخدم</h3>
+                <button class="modal-close" id="close-settings-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="settings-tabs">
+                    <div class="settings-sidebar">
+                        <button class="settings-tab active" data-tab="profile">
+                            <i class="fas fa-user"></i>
+                            الملف الشخصي
+                        </button>
+                        <button class="settings-tab" data-tab="account">
+                            <i class="fas fa-shield-alt"></i>
+                            الحساب
+                        </button>
+                        <button class="settings-tab" data-tab="privacy">
+                            <i class="fas fa-lock"></i>
+                            الخصوصية
+                        </button>
+                        <button class="settings-tab" data-tab="notifications">
+                            <i class="fas fa-bell"></i>
+                            الإشعارات
+                        </button>
+                        <button class="settings-tab" data-tab="voice">
+                            <i class="fas fa-microphone"></i>
+                            الصوت والفيديو
+                        </button>
+                        <button class="settings-tab" data-tab="appearance">
+                            <i class="fas fa-palette"></i>
+                            المظهر
+                        </button>
+                        <button class="settings-tab" data-tab="accessibility">
+                            <i class="fas fa-universal-access"></i>
+                            إمكانية الوصول
+                        </button>
+                    </div>
+                    
+                    <div class="settings-content">
+                        <!-- محتوى الإعدادات سيتم تعبئته بواسطة JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal إضافة صديق -->
+    <div id="add-friend-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>إضافة صديق</h3>
+                <button class="modal-close" id="close-add-friend-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <form id="add-friend-form">
+                    <div class="form-group">
+                        <label for="friend-username" class="form-label">اسم المستخدم</label>
+                        <div class="input-with-hint">
+                            <input type="text" 
+                                   id="friend-username-input" 
+                                   class="form-input" 
+                                   placeholder="اسم المستخدم#الرقم"
+                                   required>
+                            <div class="form-hint">مثال: Ahmed#1234</div>
+                        </div>
+                    </div>
+                    
+                    <div class="user-preview" id="friend-preview" style="display: none;">
+                        <!-- معاينة المستخدم -->
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" id="cancel-add-friend">
+                            إلغاء
+                        </button>
+                        <button type="submit" class="btn btn-primary" id="submit-add-friend">
+                            <i class="fas fa-user-plus"></i>
+                            إرسال طلب صداقة
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal دعوة أشخاص -->
+    <div id="invite-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>دعوة أشخاص إلى الخادم</h3>
+                <button class="modal-close" id="close-invite-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="invite-methods">
+                    <div class="invite-method active" data-method="link">
+                        <div class="method-header">
+                            <i class="fas fa-link"></i>
+                            <h4>رابط الدعوة</h4>
+                        </div>
+                        <div class="method-content">
+                            <div class="invite-link-container">
+                                <input type="text" 
+                                       id="invite-link-input" 
+                                       class="form-input" 
+                                       readonly
+                                       value="جارٍ التحميل...">
+                                <button class="btn btn-secondary" id="copy-invite-link">
+                                    <i class="fas fa-copy"></i>
+                                    نسخ
+                                </button>
+                            </div>
+                            <div class="invite-settings">
+                                <label class="checkbox">
+                                    <input type="checkbox" id="set-expiry">
+                                    <span>تعيين تاريخ انتهاء</span>
+                                </label>
+                                <label class="checkbox">
+                                    <input type="checkbox" id="max-uses">
+                                    <span>حد الاستخدامات</span>
+                                </label>
+                            </div>
+                            <button class="btn btn-secondary btn-block" id="generate-new-link">
+                                <i class="fas fa-sync"></i>
+                                إنشاء رابط جديد
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="invite-method" data-method="friends">
+                        <div class="method-header">
+                            <i class="fas fa-user-friends"></i>
+                            <h4>الأصدقاء</h4>
+                        </div>
+                        <div class="method-content">
+                            <div class="friends-invite-list">
+                                <!-- قائمة الأصدقاء للدعوة -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="cancel-invite">
+                        إغلاق
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal الرسائل المثبتة -->
+    <div id="pins-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content wide-modal">
+            <div class="modal-header">
+                <h3>الرسائل المثبتة</h3>
+                <button class="modal-close" id="close-pins-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="pins-list" id="pins-list">
+                    <!-- قائمة الرسائل المثبتة -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal الإيموجي -->
+    <div id="emoji-modal" class="modal emoji-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="emoji-header">
+                <div class="emoji-search">
+                    <input type="text" id="emoji-search-input" placeholder="ابحث عن إيموجي...">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="emoji-tabs">
+                    <button class="emoji-tab active" data-category="recent">
+                        <i class="fas fa-clock"></i>
+                    </button>
+                    <button class="emoji-tab" data-category="smileys">
+                        <i class="fas fa-smile"></i>
+                    </button>
+                    <button class="emoji-tab" data-category="people">
+                        <i class="fas fa-user"></i>
+                    </button>
+                    <button class="emoji-tab" data-category="animals">
+                        <i class="fas fa-cat"></i>
+                    </button>
+                    <button class="emoji-tab" data-category="food">
+                        <i class="fas fa-utensils"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="emoji-grid" id="emoji-grid">
+                <!-- شبكة الإيموجي -->
+            </div>
+        </div>
+    </div>
+
+    <!-- قائمة السياق (Context Menu) -->
+    <div id="context-menu" class="context-menu" style="display: none;">
+        <ul class="context-menu-list">
+            <!-- سيتم تعبئتها ديناميكياً -->
+        </ul>
+    </div>
+
+    <!-- تحميل -->
+    <div id="loading" class="loading-overlay" style="display: none;">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p>جاري التحميل...</p>
+        </div>
+    </div>
+
+    <!-- الإشعارات -->
+    <div id="notifications-container" class="notifications-container">
+        <!-- سيتم إضافة الإشعارات ديناميكياً -->
+    </div>
+
+    <!-- مكتبات JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/socket.io-client@4.7.2/dist/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    
+    <!-- ملفات JavaScript الخاصة بالتطبيق -->
+    <script src="assets/js/utils.js"></script>
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/socket.js"></script>
+    <script src="assets/js/auth.js"></script>
+    <script src="assets/js/servers.js"></script>
+    <script src="assets/js/channels.js"></script>
+    <script src="assets/js/messages.js"></script>
+    <script src="assets/js/users.js"></script>
+    <script src="assets/js/modals.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
